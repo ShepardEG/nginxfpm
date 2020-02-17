@@ -12,9 +12,9 @@ services:
       - 80:80
     networks:
       - app-network
-  phpfpm:
+  app:
     image: php:7.2-fpm
-    container_name: phpfpm
+    container_name: MyProject
     restart: always
     volumes:
       - ./public/:/var/www/public/
