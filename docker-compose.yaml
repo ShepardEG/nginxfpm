@@ -1,0 +1,24 @@
+version: "2"
+
+services:
+  nginx:
+    image: nginx
+    container_name: proxy
+    restart: always
+    volumes:
+      - ./conf.d/:/etc/nginx/conf.d/
+      - ./public/:/var/www/public/
+    ports:
+      - 80:80
+    networks:
+      - app-network
+  phpfpm:
+    image: php:7.2-fpm
+    container_name: phpfpm
+    restart: always
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
