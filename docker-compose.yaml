@@ -16,6 +16,8 @@ services:
     image: php:7.2-fpm
     container_name: phpfpm
     restart: always
+    volumes:
+      - ./public/:/var/www/public/
     networks:
       - app-network
 
